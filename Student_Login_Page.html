@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" 
+content="text/html; charset=utf-8">
+<title>Student Login</title>
+</head>
+<style>
+
+	body
+	{
+		background-color: #00F;
+	}
+	
+	#Title
+	{
+		color: #00F;
+		font-size: 64px;
+		background-color: #FFF;
+		width: 550px;
+		height: 100px;
+		margin: auto;
+		top: 50px;
+	}
+	
+	*
+	{
+		position: relative;
+		font-family: "Arial Black", Gadget, sans-serif;
+		text-align: center;
+	}
+	
+	form
+	{
+		color: #FFF;
+	}
+	
+	#username
+	{
+		top: 50px;
+		font-size: 16px;
+	}
+
+	#class
+	{
+		top: 50px;
+		font-size: 16px;
+	}
+
+	#password
+	{
+		top: 50px;
+		font-size: 16px;
+	}
+
+	input
+	{
+		height:50px;
+		width:300px;
+		font-size:32px;
+	}
+	
+	button
+	{
+		color: #00F;
+		top: 100px;
+		font-size: 36px;
+		border-radius: 5px;
+	}
+</style>
+<body>
+	<h1 id="Title">Student Login</h1>
+	
+	<!-- This form is where the student can enter their
+	username, class and password to be processed by the website. -->
+    <form action="DBstudentLogin.php" method="POST">
+    	<div id="username">
+    		<h1>Username:</h1>
+    		<input type="text" name="studentName">
+    	</div>
+    	<div id="class">
+    		<h1>Class:</h1>
+    		<input type="text" name="class">
+    	</div>
+        <div id="password">
+        	<h1>Password:</h1>
+        	<input type="password" name="studentPwd">
+        </div>
+        <button 
+        type="submit" 
+        name="Login" 
+        value="False">
+        	Login
+        </button>
+	</form>
+	<div class="alert">
+		<span class="closebtn">
+			&times;
+		</span>
+		This Account doesn't Exists, username or password is wrong!
+	</div>
+</body>
+<script>
+	var urlResult = window.location.search;
+    var exist = urlResult.slice(urlResult.indexOf("=") + 1);
+    if (exist == "False")
+    {
+		document.getElementsByClassName('alert')[0].style.display = "block";
+	}
+	else
+	{
+		document.getElementsByClassName('alert')[0].style.display = "none";
+	}
+	var close = document.getElementsByClassName("closebtn");
+	var i;
+	for (i = 0; i < close.length; i++)
+	{
+		close[i].onclick = function()
+		{
+			var div = this.parentElement;
+			div.style.opacity = "0";
+			setTimeout(function(){ div.style.display = "none"; }, 600);
+    	}	
+	}
+</script>
+</html>

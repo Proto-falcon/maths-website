@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Teacher Account</title>
+</head>
+
+<!-- Contains CSS code that styles elements selected by select. -->
+<style>
+
+	body
+	{
+		background-color: #00F;
+	}
+	
+	#Title
+	{
+		color: #00F;
+		font-size: 64px;
+		background-color: #FFF;
+		width: 650px;
+		height: 100px;
+		margin: auto;
+		top: 50px;
+	}
+	
+	*
+	{
+		position: relative;
+		font-family: "Arial Black", Gadget, sans-serif;
+		text-align: center;
+	}
+	
+	form
+	{
+		color: #00F;
+	}
+	
+	#username
+	{
+		top: 50px;
+		font-size: 16px;
+	}
+	
+	#password
+	{
+		top: 50px;
+		font-size: 16px;
+	}
+	
+	input
+	{
+		height:50px;
+		width:300px;
+		font-size:32px;
+	}
+	
+	button
+	{
+		color: #00F;
+		top: 150px;
+		font-size: 36px;
+		border-radius: 5px;
+	}
+
+	#SignIn
+	{
+		margin-right: 5%;
+	}
+
+	#userInfo
+	{
+		top: 20px;
+		margin: auto;
+		font-family: "Arial Black", Gadget, sans-serif;
+		background-color: #FFF;
+		width: 295px;
+		padding: 5px;
+	}
+
+	.alert
+	{
+		padding: 20px;
+		width: 700px;
+		margin: auto;
+		background-color: #FFF;
+		color: #00F;
+		border-radius: 10px;
+		font-size: 40px;
+		font-family: "Arial Black", Gadget, sans-serif;
+		top: 200px;
+	}
+	
+	.closebtn:hover
+	{
+		color: black;
+	}
+</style>
+<body>
+	<h1 id="Title">Teacher Account</h1>
+    <form action="DBteacherAccount.php" method="post">
+    	<!-- This form contains input fields for username, password and sign in and login buttons. -->
+    	<div id="username"> <h1 id="userInfo">Username:</h1>
+    		<input style="top: 40px;" type="text" name="username">
+    	</div>
+        <div id="password"> 
+        	<h1 id="userInfo" style="top:60px;">
+        		Password:
+        	</h1>
+        	<input 
+        	style="
+        	top: 80px;" 
+        	type="password" 
+        	name="password">
+        </div>
+        <button 
+        id="SignIn" 
+        type="submit" 
+        name="SignIn" 
+        value="False">
+        	Sign In
+    	</button>
+		<button 
+		type="submit" 
+		name="Login" 
+		value="False">
+			Login
+		</button>
+	</form>
+
+	<!-- This is the alert that will appear on the page when the user inputs the same username and password in the form. -->
+	<div class="alert">
+		<span class="closebtn">
+			&times;
+		</span>
+		This Account Already Exists!
+	</div>
+</body>
+<script>
+	// The variable will store the search name and value in the URL.
+	var urlSearch = window.location.search;
+
+	// The variable will store the position of the first character in the search value.
+	var pos = urlSearch.indexOf("=") + 1;
+
+	// The variable will store the the search value.
+	var urlValue = urlSearch.substr(pos);
+
+	// It will show the alert if if urlValue equals "True" otherwise it will won't show the alert.
+	if (urlValue == "True")
+	{
+		document.getElementsByClassName('alert')[0].style.display = "block";
+	}
+	else
+	{
+		document.getElementsByClassName('alert')[0].style.display = "none";
+	}
+
+	// The variable will store all the attributes and values of the alert.
+	var close = document.getElementsByClassName("closebtn");
+	var i;
+	// In the for loop, if the user clicks the close button on the alert then the alert will close.
+	for (i = 0; i < close.length; i++)
+	{
+		close[i].onclick = function()
+		{
+			var div = this.parentElement;
+			div.style.opacity = "0";
+			setTimeout(function(){ div.style.display = "none"; }, 600);
+    	}	
+	}
+</script>
+</html>
